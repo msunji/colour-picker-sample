@@ -87,7 +87,7 @@ function App() {
 
   return (
     <>
-      <Container style={{ width: "60%"}}>
+      <Container style={{width: "85%", maxWidth: '900px'}}>
         <Row>
           <h1 className="mb-4 mt-4">Colour Picker Sample</h1>
           <p>Select colours from the dropdown menu below.</p>
