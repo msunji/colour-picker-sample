@@ -6,29 +6,86 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const ColourList = ['White - 300303364', 'Black - 300303191', 'Blue - 300303341', 'Grey - 300303343', 'Brown - 300303342'];
+const colours = [
+  {
+    colour: 'White',
+    code: 300303364
+  },
+  {
+    colour: 'Black',
+    code: 300303191
+  },
+  {
+    colour: 'Blue',
+    code: 300303341
+  },
+  {
+    colour: 'Grey',
+    code: 300303343
+  },
+  {
+    colour: 'Brown',
+    code: 300303342
+  },
+]
+
+const DropdownMenu = ({ zone, zoneState, onSelect }) => {
+  return (
+    <Row className="mb-4 mt-4 align-items-center">
+      <Col sm={2}>
+        {zone}
+      </Col>
+      <Col sm={10}>
+        <DropdownButton align="end" title={zoneState.colour.length === 0 ? 'Select a colour' : `${zoneState.colour} - ${zoneState.code}`} onSelect={onSelect}>
+          { colours.map(({ colour, code }) => (<Dropdown.Item eventKey={[colour, code]} key={code}>{colour} - {code}</Dropdown.Item>))}
+        </DropdownButton>
+      </Col>
+    </Row>
+  );
+};
+
+const ColourSelection = ({ cuffNum, zoneState }) => {
+
+  const emptySelectionMsg = "No colour selected yet";
+
+  return (
+    <Row className="mb-4 align-items-center">
+    <Col sm={2}>Cuff in {cuffNum}:</Col>
+    <Col sm={10}>
+      <div className="square border rounded-3 py-2 px-4 w-50">{zoneState.colour.length === 0 ? emptySelectionMsg : `${zoneState.code}`}</div>
+    </Col>
+  </Row>
+  );
+}
 
 function App() {
-  const [zoneTwo, setZoneTwo] = useState('Select colour for Zone Two');
-  const [zoneThree, setZoneThree] = useState('Select colour Zone Three');
-  const [zoneFour, setZoneFour] = useState('Select colour Zone Four');
+  // const [zoneTwo, setZoneTwo] = useState('Select colour for Zone Two');
+  const [zoneTwo, setZoneTwo] = useState({ colour: '', code: '' });
+  const [zoneThree, setZoneThree] = useState({ colour: '', code: '' });
+  const [zoneFour, setZoneFour] = useState({ colour: '', code: '' });
+  // const [zoneThree, setZoneThree] = useState('Select colour for Zone Three');
+  // const [zoneFour, setZoneFour] = useState('Select colour for Zone Four');
 
   const handleZoneTwo = (e) => {
-    console.log(e);
-    setZoneTwo(e);
+    let newColour = e.split(',')[0];
+    let newCode = e.split(',')[1];
+    let newPair = { colour: newColour, code: newCode }
+    setZoneTwo(newPair);
   }
 
   const handleZoneThree = (e) => {
-    console.log(e);
-    setZoneThree(e);
+    let newColour = e.split(',')[0];
+    let newCode = e.split(',')[1];
+    let newPair = { colour: newColour, code: newCode }
+    setZoneThree(newPair);
   }
 
   const handleZoneFour = (e) => {
-    console.log(e);
-    setZoneFour(e);
+    let newColour = e.split(',')[0];
+    let newCode = e.split(',')[1];
+    let newPair = { colour: newColour, code: newCode }
+    setZoneFour(newPair);
   }
-
-  const emptySelectionMsg = "No colour selected yet"
 
   return (
     <>
@@ -37,71 +94,20 @@ function App() {
           <h1 className="mb-4 mt-4">Colour Picker Sample</h1>
           <p>Select colours from the dropdown menu below.</p>
           <hr />
-          <Row className="mb-4 mt-4 align-items-center">
-            <Col sm={2}>
-              Zone 2
-            </Col>
-            <Col sm={10}>
-              <DropdownButton align="end" title={zoneTwo} onSelect={handleZoneTwo}>
-              { ColourList.map((colour) => (<Dropdown.Item eventKey={colour} key={colour}>{colour}</Dropdown.Item>))}
-              </DropdownButton>
-            </Col>
-          </Row>
-          <Row className="mb-4 align-items-center">
-            <Col sm={2}>
-              Zone 3
-            </Col>
-            <Col sm={10}>
-              <DropdownButton align="end" title={zoneThree} onSelect={handleZoneThree}>
-              { ColourList.map((colour) => (<Dropdown.Item eventKey={colour} key={colour}>{colour}</Dropdown.Item>))}
-              </DropdownButton>
-            </Col>
-          </Row>
-          <Row className="mb-4 align-items-center">
-            <Col sm={2}>
-              Zone 4
-            </Col>
-            <Col sm={10}>
-              <DropdownButton align="end" title={zoneFour} onSelect={handleZoneFour}>
-              { ColourList.map((colour) => (<Dropdown.Item eventKey={colour} key={colour}>{colour}</Dropdown.Item>))}
-              </DropdownButton>
-            </Col>
-          </Row>
         </Row>
-        <hr />
-        <Row className="mt-4">
-          <Row className="mb-4 align-items-center">
-            <Col sm={2}>Cuff in 2:</Col>
-            <Col sm={10}>
-              <div className="square border rounded-3 py-2 px-4 w-50">{zoneThree.includes('Select') ? emptySelectionMsg : zoneThree.split(' - ')[1]}</div>
-            </Col>
-          </Row>
-          <Row className="mb-4 align-items-center">
-            <Col sm={2}>Cuff in 3:</Col>
-            <Col sm={10}>
-              <div className="square border rounded-3 py-2 px-4 w-50">{zoneTwo.includes('Select') ? emptySelectionMsg : zoneTwo.split(' - ')[1]}</div>
-            </Col>
-          </Row>
-          <Row className="mb-4 align-items-center">
-            <Col sm={2}>Cuff in 4:</Col>
-            <Col sm={10}>
-              <div className="square border rounded-3 py-2 px-4 w-50">{zoneThree.includes('Select') ? emptySelectionMsg : zoneThree.split(' - ')[1]}</div>
-            </Col>
-          </Row>
-          <Row className="mb-4 align-items-center">
-            <Col sm={2}>Cuff in 5:</Col>
-            <Col sm={10}>
-              <div className="square border rounded-3 py-2 px-4 w-50">{zoneTwo.includes('Select') ? emptySelectionMsg : zoneTwo.split(' - ')[1]}</div>
-            </Col>
-          </Row>
-          <Row className="mb-4 align-items-center">
-            <Col sm={2}>Cuff in 6:</Col>
-            <Col sm={10}>
-              <div className="square border rounded-3 py-2 px-4 w-50">{zoneFour.includes('Select') ? emptySelectionMsg : zoneFour.split(' - ')[1]}</div>
-            </Col>
-          </Row>
-        </Row>
+        <DropdownMenu zone="Zone 2" zoneState={zoneTwo} onSelect={handleZoneTwo} />
+        <DropdownMenu zone="Zone 3" zoneState={zoneThree} onSelect={handleZoneThree} />
+        <DropdownMenu zone="Zone 4" zoneState={zoneFour} onSelect={handleZoneFour} />
 
+        <hr />
+
+        <Row className="mt-4 mb-4">
+          <ColourSelection cuffNum="2" zoneState={zoneThree} />
+          <ColourSelection cuffNum="3" zoneState={zoneTwo} />
+          <ColourSelection cuffNum="4" zoneState={zoneThree} />
+          <ColourSelection cuffNum="5" zoneState={zoneTwo} />
+          <ColourSelection cuffNum="6" zoneState={zoneFour} />
+        </Row>
       </Container>
     </>
   );
