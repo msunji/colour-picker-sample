@@ -59,32 +59,30 @@ const ColourSelection = ({ cuffNum, zoneState }) => {
 }
 
 function App() {
-  // const [zoneTwo, setZoneTwo] = useState('Select colour for Zone Two');
   const [zoneTwo, setZoneTwo] = useState({ colour: '', code: '' });
   const [zoneThree, setZoneThree] = useState({ colour: '', code: '' });
   const [zoneFour, setZoneFour] = useState({ colour: '', code: '' });
-  // const [zoneThree, setZoneThree] = useState('Select colour for Zone Three');
-  // const [zoneFour, setZoneFour] = useState('Select colour for Zone Four');
+
+  const splitValue = (value) => {
+    let newColour = value.split(',')[0];
+    let newCode = value.split(',')[1];
+    let newPair = { colour: newColour, code: newCode }
+    return newPair;
+  }
 
   const handleZoneTwo = (e) => {
-    let newColour = e.split(',')[0];
-    let newCode = e.split(',')[1];
-    let newPair = { colour: newColour, code: newCode }
-    setZoneTwo(newPair);
+    let newColour = splitValue(e);
+    setZoneTwo(newColour);
   }
 
   const handleZoneThree = (e) => {
-    let newColour = e.split(',')[0];
-    let newCode = e.split(',')[1];
-    let newPair = { colour: newColour, code: newCode }
-    setZoneThree(newPair);
+    let newColour = splitValue(e);
+    setZoneThree(newColour);
   }
 
   const handleZoneFour = (e) => {
-    let newColour = e.split(',')[0];
-    let newCode = e.split(',')[1];
-    let newPair = { colour: newColour, code: newCode }
-    setZoneFour(newPair);
+    let newColour = splitValue(e);
+    setZoneFour(newColour);
   }
 
   return (
