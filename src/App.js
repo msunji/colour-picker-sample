@@ -6,12 +6,12 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const ColourList = ['300303364', '300303191', '300303341', '300303343', '300303342'];
+const ColourList = ['White - 300303364', 'Black - 300303191', 'Blue - 300303341', 'Grey - 300303343', 'Brown - 300303342'];
 
 function App() {
-  const [zoneTwo, setZoneTwo] = useState('Select colour for Zone two');
-  const [zoneThree, setZoneThree] = useState('Selected colour shown here');
-  const [zoneFour, setZoneFour] = useState('Selected colour shown here');
+  const [zoneTwo, setZoneTwo] = useState('Select colour for Zone Two');
+  const [zoneThree, setZoneThree] = useState('Select colour Zone Three');
+  const [zoneFour, setZoneFour] = useState('Select colour Zone Four');
 
   const handleZoneTwo = (e) => {
     console.log(e);
@@ -27,6 +27,8 @@ function App() {
     console.log(e);
     setZoneFour(e);
   }
+
+  const emptySelectionMsg = "No colour selected yet"
 
   return (
     <>
@@ -71,31 +73,31 @@ function App() {
           <Row className="mb-4 align-items-center">
             <Col sm={2}>Cuff in 2:</Col>
             <Col sm={10}>
-              <div className="square border rounded-3 py-2 px-4 w-50">{zoneThree}</div>
+              <div className="square border rounded-3 py-2 px-4 w-50">{zoneThree.includes('Select') ? emptySelectionMsg : zoneThree.split(' - ')[1]}</div>
             </Col>
           </Row>
           <Row className="mb-4 align-items-center">
             <Col sm={2}>Cuff in 3:</Col>
             <Col sm={10}>
-              <div className="square border rounded-3 py-2 px-4 w-50">{zoneTwo}</div>
+              <div className="square border rounded-3 py-2 px-4 w-50">{zoneTwo.includes('Select') ? emptySelectionMsg : zoneTwo.split(' - ')[1]}</div>
             </Col>
           </Row>
           <Row className="mb-4 align-items-center">
             <Col sm={2}>Cuff in 4:</Col>
             <Col sm={10}>
-              <div className="square border rounded-3 py-2 px-4 w-50">{zoneThree}</div>
+              <div className="square border rounded-3 py-2 px-4 w-50">{zoneThree.includes('Select') ? emptySelectionMsg : zoneThree.split(' - ')[1]}</div>
             </Col>
           </Row>
           <Row className="mb-4 align-items-center">
             <Col sm={2}>Cuff in 5:</Col>
             <Col sm={10}>
-              <div className="square border rounded-3 py-2 px-4 w-50">{zoneTwo}</div>
+              <div className="square border rounded-3 py-2 px-4 w-50">{zoneTwo.includes('Select') ? emptySelectionMsg : zoneTwo.split(' - ')[1]}</div>
             </Col>
           </Row>
           <Row className="mb-4 align-items-center">
             <Col sm={2}>Cuff in 6:</Col>
             <Col sm={10}>
-              <div className="square border rounded-3 py-2 px-4 w-50">{zoneFour}</div>
+              <div className="square border rounded-3 py-2 px-4 w-50">{zoneFour.includes('Select') ? emptySelectionMsg : zoneFour.split(' - ')[1]}</div>
             </Col>
           </Row>
         </Row>
