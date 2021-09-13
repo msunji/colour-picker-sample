@@ -6,7 +6,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const ColourList = ['White - A111', 'Red - A112', 'Blue - A113', 'Gray - A114', 'Brown - A115'];
+const ColourList = ['White - 300303364', 'Red - 300303191', 'Blue - 300303341', 'Gray - 300303343', 'Brown - 300303342'];
 
 function App() {
   const [zoneTwo, setZoneTwo] = useState('Selected colour shown here');
@@ -50,7 +50,7 @@ function App() {
               Zone 3
             </Col>
             <Col sm={10}>
-              <DropdownButton title="Select colour for Zone 2" onSelect={handleZoneThree}>
+              <DropdownButton title="Select colour for Zone 3" onSelect={handleZoneThree}>
               { ColourList.map((colour) => (<Dropdown.Item eventKey={colour} key={colour}>{colour}</Dropdown.Item>))}
               </DropdownButton>
             </Col>
@@ -60,7 +60,7 @@ function App() {
               Zone 4
             </Col>
             <Col sm={10}>
-              <DropdownButton title="Select colour for Zone 2" onSelect={handleZoneFour}>
+              <DropdownButton title="Select colour for Zone 4" onSelect={handleZoneFour}>
               { ColourList.map((colour) => (<Dropdown.Item eventKey={colour} key={colour}>{colour}</Dropdown.Item>))}
               </DropdownButton>
             </Col>
