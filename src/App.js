@@ -9,7 +9,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const ColourList = ['White - 300303364', 'Red - 300303191', 'Blue - 300303341', 'Gray - 300303343', 'Brown - 300303342'];
 
 function App() {
-  const [zoneTwo, setZoneTwo] = useState('Selected colour shown here');
+  const [zoneTwo, setZoneTwo] = useState('Select colour for Zone two');
   const [zoneThree, setZoneThree] = useState('Selected colour shown here');
   const [zoneFour, setZoneFour] = useState('Selected colour shown here');
 
@@ -40,7 +40,7 @@ function App() {
               Zone 2
             </Col>
             <Col sm={10}>
-              <DropdownButton title="Select colour for Zone 2" onSelect={handleZoneTwo}>
+              <DropdownButton align="end" title={zoneTwo} onSelect={handleZoneTwo}>
               { ColourList.map((colour) => (<Dropdown.Item eventKey={colour} key={colour}>{colour}</Dropdown.Item>))}
               </DropdownButton>
             </Col>
@@ -50,7 +50,7 @@ function App() {
               Zone 3
             </Col>
             <Col sm={10}>
-              <DropdownButton title="Select colour for Zone 3" onSelect={handleZoneThree}>
+              <DropdownButton align="end" title={zoneThree} onSelect={handleZoneThree}>
               { ColourList.map((colour) => (<Dropdown.Item eventKey={colour} key={colour}>{colour}</Dropdown.Item>))}
               </DropdownButton>
             </Col>
@@ -60,7 +60,7 @@ function App() {
               Zone 4
             </Col>
             <Col sm={10}>
-              <DropdownButton title="Select colour for Zone 4" onSelect={handleZoneFour}>
+              <DropdownButton align="end" title={zoneFour} onSelect={handleZoneFour}>
               { ColourList.map((colour) => (<Dropdown.Item eventKey={colour} key={colour}>{colour}</Dropdown.Item>))}
               </DropdownButton>
             </Col>
