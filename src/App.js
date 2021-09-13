@@ -6,7 +6,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const ColourList = ['White - 300303364', 'Red - 300303191', 'Blue - 300303341', 'Gray - 300303343', 'Brown - 300303342'];
+const ColourList = ['300303364', '300303191', '300303341', '300303343', '300303342'];
 
 function App() {
   const [zoneTwo, setZoneTwo] = useState('Select colour for Zone two');
